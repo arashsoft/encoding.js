@@ -1,7 +1,7 @@
 {
   "name": "encoding-min",
   "main": "encoding.js",
-  "version": "1.0.25",
+  "version": "2.0.0",
   "homepage": "https://github.com/arashsoft/encoding.js.git",
   "authors": [
     "arashsoft <arashsoft@gmail.com>"
