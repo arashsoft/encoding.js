@@ -31,7 +31,7 @@ bower install encoding-min
 or
 ```add it as a dependency in package.json
  "dependencies": {
-    "encoding-min": "1.0.25",
+    "encoding-min": "~2.0.0",
   },
 ```
 
