@@ -1,22 +1,47 @@
-encoding.js
+encoding-min
 ===========
 
-[![Build Status](https://travis-ci.org/polygonplanet/encoding.js.svg?branch=master)](https://travis-ci.org/polygonplanet/encoding.js)
+This is a compact fork of [encoding-japanese](https://github.com/polygonplanet/encoding.js) without japanese encoding in order to reduce size of final package.
+
 
 Converts character encoding in JavaScript.  
 
-**[README(Japanese)](https://github.com/polygonplanet/encoding.js/blob/master/README_ja.md)**
+##### Available Encodings:
+
+* '**UTF32**'   (detect only)
+* '**UTF16**'
+* '**UTF16BE**'
+* '**UTF16LE**'
+* '**BINARY**'  (detect only)
+* '**ASCII**'   (detect only)
+* '**UTF8**'
+* '**UNICODE**' (JavaScript Unicode Array)
+
+Note: UNICODE is an array that has a value of String.charCodeAt() in JavaScript.  
+(Each value in the array possibly has a number of more than 256.)
+
 
 ### Installation
 
-#### In Browser:
+##### Bower:
+
+```bash
+bower install encoding-min
+```
+or
+```add it as a dependency in package.json
+ "dependencies": {
+    "encoding-min": "1.0.25",
+  },
+```
+
+
+##### In Browser:
 
 ```html
 <script src="encoding.js"></script>
 ```
-
 or
-
 ```html
 <script src="encoding.min.js"></script>
 ```
@@ -25,25 +50,6 @@ Object **Encoding** will defined in the global scope.
 
 Conversion and detection for the Array (like Array object).  
 
-#### In Node.js:
-
-encoding.js is published by module name of `encoding-japanese` in npm.
-
-```bash
-npm install encoding-japanese
-```
-
-```javascript
-var encoding = require('encoding-japanese');
-```
-
-Each methods are also available for the *Buffer* in Node.js.
-
-#### bower:
-
-```bash
-bower install encoding-japanese
-```
 
 #### Convert character encoding (convert):
 
@@ -58,12 +64,12 @@ bower install encoding-japanese
 ```javascript
 // Convert character encoding to Shift_JIS from UTF-8.
 var utf8Array = new Uint8Array(...) or [...] or Array(...) or Buffer(...);
-var sjisArray = Encoding.convert(utf8Array, 'SJIS', 'UTF8');
+var UNICODE_Array = Encoding.convert(utf8Array, 'UNICODE', 'UTF8');
 
 // Convert character encoding by automatic detection (AUTO detect).
-var sjisArray = Encoding.convert(utf8Array, 'SJIS');
+var UNICODE_Array = Encoding.convert(utf8Array, 'UNICODE');
 // or  
-var sjisArray = Encoding.convert(utf8Array, 'SJIS', 'AUTO');
+var UNICODE_Array = Encoding.convert(utf8Array, 'UNICODE', 'AUTO');
 
 // Detect the character encoding.
 // The return value be one of the "Available Encodings" below.
@@ -72,23 +78,6 @@ if (detected === 'UTF8') {
   console.log('Encoding is UTF-8');
 }
 ```
-
-##### Available Encodings:
-
-* '**UTF32**'   (detect only)
-* '**UTF16**'
-* '**UTF16BE**'
-* '**UTF16LE**'
-* '**BINARY**'  (detect only)
-* '**ASCII**'   (detect only)
-* '**JIS**'
-* '**UTF8**'
-* '**EUCJP**'
-* '**SJIS**'
-* '**UNICODE**' (JavaScript Unicode Array)
-
-Note: UNICODE is an array that has a value of String.charCodeAt() in JavaScript.  
-(Each value in the array possibly has a number of more than 256.)
 
 
 ##### Specify the Object argument
@@ -174,9 +163,9 @@ if (detected === 'UTF8') {
 }
 
 // Detect character encoding by specific encoding name.
-var isSJIS = Encoding.detect(sjisArray, 'SJIS');
-if (isSJIS) {
-  console.log('Encoding is SJIS');
+var isUTF8 = Encoding.detect(sjisArray, 'UTF8');
+if (isUTF8) {
+  console.log('Encoding is UTF8');
 }
 ```
 
