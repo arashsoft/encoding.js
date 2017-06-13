@@ -97,19 +97,8 @@ var EncodingNames = {
     order: 3,
     alias: ['ISO646', 'CP367']
   },
-  JIS: {
-    order: 4,
-    alias: ['ISO2022JP']
-  },
   UTF8: {
     order: 5
-  },
-  EUCJP: {
-    order: 6
-  },
-  SJIS: {
-    order: 7,
-    alias: ['CP932', 'MSKANJI', 'WINDOWS31J']
   },
   UNICODE: {
     order: 8
